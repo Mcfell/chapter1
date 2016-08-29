@@ -16,14 +16,14 @@ public class DbUtil {
     private static final String DRIVER;
     public static final String USERNAME;
     public static final String PASSWORD;
-    private static class db{
+    /*private static class db{
         private static final DbUtil dbUtil = new DbUtil();
     }
     private DbUtil(){
     }
     public static final DbUtil getInstance() {
         return db.dbUtil;
-    }
+    }*/
 
     static {
         Properties properties = PropUtils.loadProps("config.properties");
@@ -40,11 +40,11 @@ public class DbUtil {
         }
     }
 
-    public MyConnection getConnection() {
+    public static MyConnection getConnection() {
         MyConnection conn = new MyConnection();
         return conn;
     }
-    public void closeConnection(MyConnection conn) {
+    public static void closeConnection(MyConnection conn) {
         if (conn != null) {
             conn.close();
         }

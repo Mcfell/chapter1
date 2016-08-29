@@ -3,6 +3,7 @@ package org.smart4j.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -22,15 +23,20 @@ public class PropUtils {
 
         try{
             is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
+            if (is == null) {
+                throw new FileNotFoundException(fileName + "file is not found");
+            }
             properties = new Properties();
             properties.load(is);
         }catch (IOException e){
             LOGGER.error("load properties file failure", e);
         }finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                LOGGER.error("close input stream failure", e);
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    LOGGER.error("close input stream failure", e);
+                }
             }
         }
         return properties;
@@ -43,7 +49,7 @@ public class PropUtils {
 
     public static String getString(Properties properties, String key, String defaultValue) {
         String value = defaultValue;
-        if (properties.contains(key)) {
+        if (properties.containsKey(key)) {
            value = properties.getProperty(key);
         }
         return value;
@@ -55,7 +61,7 @@ public class PropUtils {
 
     private static int getInteger(Properties properties, String key, int defaultValue) {
         int value = defaultValue;
-        if (properties.contains(key)) {
+        if (properties.containsKey(key)) {
             value = CastUtil.castInt(properties.getProperty(key));
         }
         return value;

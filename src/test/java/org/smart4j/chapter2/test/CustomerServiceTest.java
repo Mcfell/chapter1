@@ -6,10 +6,12 @@ import org.junit.Test;
 import org.smart4j.chapter2.model.Customer;
 import org.smart4j.chapter2.service.CustomerService;
 import org.smart4j.utils.DbUtil;
+import org.smart4j.utils.PropUtils;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by stando on 2016/8/29.
@@ -22,7 +24,15 @@ public class CustomerServiceTest {
     @Before
     public void init(){
         //TODO 初始化数据库
-        DbUtil.getInstance();
+        //DbUtil.getInstance();
+    }
+
+    @Test
+    public void propertyTest() {
+        Properties properties = PropUtils.loadProps("config.properties");
+        String url = PropUtils.getString(properties,"jdbc.url");
+        Assert.assertNotNull(url);
+        System.out.println("jdbc.url: "+url);
     }
     @Test
     public void getCustomerListTest() throws Exception{

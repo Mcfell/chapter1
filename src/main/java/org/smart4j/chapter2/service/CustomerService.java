@@ -17,7 +17,7 @@ import java.util.Map;
 public class CustomerService {
     /*获取客户列表*/
     public List<Customer> getCustomerList(String keyword){
-        MyConnection conn = DbUtil.getInstance().getConnection();
+        MyConnection conn = DbUtil.getConnection();
         List<Customer> customerList = new ArrayList<Customer>();
         String sql = "select * from user";
         if(conn.selectQuery(sql)){
@@ -44,7 +44,7 @@ public class CustomerService {
     }
     public Customer getCustomer(int id){
         //TODO
-        MyConnection conn = DbUtil.getInstance().getConnection();
+        MyConnection conn = DbUtil.getConnection();
         Customer customer = null;
         String sql = "select * from user where id = ?";
         if(conn.selectQuery(sql, CastUtil.castString(id))){

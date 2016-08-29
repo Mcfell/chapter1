@@ -14,6 +14,10 @@ public class MyConnection {
     private ResultSet rs = null;
     private PreparedStatement stmt = null;
     private static final Logger LOGGER = LoggerFactory.getLogger(MyConnection.class);
+
+    public MyConnection() {
+        this.conn = getConn();
+    }
     public Connection getConn(){
         Connection connection = null;
         try {
@@ -41,7 +45,7 @@ public class MyConnection {
 
     public boolean selectQuery (String sql,String... query) {
         try {
-            this.stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             for (int i = 0; i < query.length; i++) {
                 stmt.setString(i,query[i]);
             }
@@ -55,6 +59,8 @@ public class MyConnection {
         }
         return false;
     }
+
+    
 
     public boolean updateQuery(String sql, String... update) {
         int updateNum = 0;
