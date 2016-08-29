@@ -23,7 +23,7 @@ public class CastUtil {
         return intValue;
     }
 
-    private static String castString(Object property) {
+    public static String castString(Object property) {
         return castString(property,"");
     }
 

@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.smart4j.chapter2.model.Customer;
 import org.smart4j.chapter2.service.CustomerService;
+import org.smart4j.utils.DbUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ public class CustomerServiceTest {
     @Before
     public void init(){
         //TODO 初始化数据库
+        DbUtil.getInstance();
     }
     @Test
     public void getCustomerListTest() throws Exception{

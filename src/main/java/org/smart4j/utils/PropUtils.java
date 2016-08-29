@@ -21,7 +21,7 @@ public class PropUtils {
         InputStream is = null;
 
         try{
-            is = Thread.currentThread().getClass().getClassLoader().getResourceAsStream(fileName);
+            is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
             properties = new Properties();
             properties.load(is);
         }catch (IOException e){

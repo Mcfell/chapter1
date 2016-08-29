@@ -2,10 +2,9 @@ package org.smart4j.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smart4j.utils.utilBean.MyConnection;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 /**
@@ -13,10 +12,10 @@ import java.util.Properties;
  */
 public class DbUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(DbUtil.class);
-    private static final String URL;
+    public static final String URL;
     private static final String DRIVER;
-    private static final String USERNAME:
-    private static final String PASSWORD;
+    public static final String USERNAME;
+    public static final String PASSWORD;
     private static class db{
         private static final DbUtil dbUtil = new DbUtil();
     }
@@ -33,6 +32,7 @@ public class DbUtil {
         USERNAME = PropUtils.getString(properties, "jdbc.username");
         PASSWORD = PropUtils.getString(properties, "jdbc.password");
 
+        LOGGER.error(DRIVER);
         try {
             Class.forName(DRIVER);
         } catch (ClassNotFoundException e) {
@@ -40,23 +40,13 @@ public class DbUtil {
         }
     }
 
-    public static Connection getConnection() {
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-        } catch (SQLException e) {
-            LOGGER.error("get connection failure", e);
-        }
-        return connection;
+    public MyConnection getConnection() {
+        MyConnection conn = new MyConnection();
+        return conn;
     }
-    public static void closeConnection(Connection conn) {
+    public void closeConnection(MyConnection conn) {
         if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                LOGGER.error("close connection failure", e);
-            }
+            conn.close();
         }
     }
 }
