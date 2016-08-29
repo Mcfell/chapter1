@@ -1,0 +1,14 @@
+# Maven #
+target/
+# IDEA #
+.ida/
+*.iml
+
+# Eclipse #
+.settiongs/
+.metadata/
+.classpath
+.project
+Servers/
+
+.gitignore
