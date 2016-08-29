@@ -1,7 +1,7 @@
 # Maven #
 target/
 # IDEA #
-.ida/
+.idea/
 *.iml
 
 # Eclipse #
