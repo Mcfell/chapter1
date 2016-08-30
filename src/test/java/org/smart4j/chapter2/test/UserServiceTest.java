@@ -3,9 +3,8 @@ package org.smart4j.chapter2.test;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.smart4j.chapter2.model.Customer;
+import org.smart4j.chapter2.model.User;
 import org.smart4j.chapter2.service.CustomerService;
-import org.smart4j.utils.DbUtil;
 import org.smart4j.utils.PropUtils;
 
 import java.util.HashMap;
@@ -16,9 +15,9 @@ import java.util.Properties;
 /**
  * Created by stando on 2016/8/29.
  */
-public class CustomerServiceTest {
+public class UserServiceTest {
     private final CustomerService customerService;
-    public CustomerServiceTest(){
+    public UserServiceTest(){
         customerService = new CustomerService();
     }
     @Before
@@ -36,14 +35,14 @@ public class CustomerServiceTest {
     }
     @Test
     public void getCustomerListTest() throws Exception{
-        List<Customer> customerList = customerService.getCustomerList("");
-        Assert.assertEquals(2, customerList.size());
+        List<User> userList = customerService.getCustomerList("");
+        Assert.assertEquals(2, userList.size());
     }
     @Test
     public void getCustomerTest() throws Exception{
         int id = 1;
-        Customer customer = customerService.getCustomer(id);
-        Assert.assertNotNull(customer);
+        User user = customerService.getCustomer(id);
+        Assert.assertNotNull(user);
     }
     @Test
     public void deleteCustmoerTest() throws Exception{

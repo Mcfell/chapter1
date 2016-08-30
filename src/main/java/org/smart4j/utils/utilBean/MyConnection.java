@@ -1,3 +1,4 @@
+/*
 package org.smart4j.utils.utilBean;
 
 import org.slf4j.Logger;
@@ -6,9 +7,11 @@ import org.smart4j.utils.DbUtil;
 
 import java.sql.*;
 
+*/
 /**
  * Created by stando on 2016/8/29.
- */
+ *//*
+
 public class MyConnection {
     private Connection conn = null;
     private ResultSet rs = null;
@@ -60,7 +63,7 @@ public class MyConnection {
         return false;
     }
 
-    
+
 
     public boolean updateQuery(String sql, String... update) {
         int updateNum = 0;
@@ -88,3 +91,4 @@ public class MyConnection {
         this.rs = rs;
     }
 }
+*/

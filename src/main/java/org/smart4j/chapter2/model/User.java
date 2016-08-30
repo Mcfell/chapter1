@@ -3,7 +3,7 @@ package org.smart4j.chapter2.model;
 /**
  * Created by stando on 2016/8/29.
  */
-public class Customer {
+public class User {
     private int id;
     private String nickname;
     private String password;
@@ -13,10 +13,10 @@ public class Customer {
     private int loseNum;
     private int level;
 
-    public Customer() {
+    public User() {
     }
 
-    public Customer(String nickname, String password, String phone, int rank, int winNum, int loseNum, int level) {
+    public User(String nickname, String password, String phone, int rank, int winNum, int loseNum, int level) {
         //this.id = id;
         this.nickname = nickname;
         this.password = password;
